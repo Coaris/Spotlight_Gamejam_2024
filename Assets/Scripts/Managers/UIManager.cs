@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChanger : MonoBehaviour {
+public class UIManager : MonoBehaviour {
         [SerializeField] private SceneConfig sceneConfig;
 
+        public void OnQuit() {
+                Application.Quit();
+        }
+
+        #region ²Ëµ¥³¡¾°ÇÐ»»
         public void OnLoadMainMenu() {
                 SceneManager.LoadScene(sceneConfig.MainMenu.name);
         }
@@ -18,7 +23,7 @@ public class SceneChanger : MonoBehaviour {
         public void OnLoadNewGame() {
                 SceneManager.LoadScene(sceneConfig.NewGame.name);
         }
-        public void OnQuit() {
-                Application.Quit();
-        }
+        #endregion 
+
+        
 }
