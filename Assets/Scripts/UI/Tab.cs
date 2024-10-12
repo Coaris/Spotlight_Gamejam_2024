@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Image))]
-public class Tab : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPointerClickHandler {
+public class Tab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
         [HideInInspector] public Image background;
         [HideInInspector] public GameMenuManager gameMenuManager;
+
+        public UnityEvent onSelected;
+        public UnityEvent onDeselected;
 
         #region Interfaces
         public void OnPointerEnter(PointerEventData eventData) {
@@ -18,6 +22,15 @@ public class Tab : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,IPoint
         }
         public void OnPointerClick(PointerEventData eventData) {
                 gameMenuManager.SelectTab(this);
+        }
+        #endregion
+
+        #region Events
+        public void OnSelected() {
+                if (onSelected != null) onSelected.Invoke();
+        }
+        public void OnDeselected() {
+                if (onDeselected != null) onDeselected.Invoke();
         }
         #endregion
 

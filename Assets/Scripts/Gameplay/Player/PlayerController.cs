@@ -21,16 +21,7 @@ public class PlayerController : MonoBehaviour {
                 playerInput = GetComponent<PlayerInput>();
         }
 
-        public void OnGameplay(InputAction.CallbackContext context) {
-                if (context.phase == InputActionPhase.Started) {
-                        Debug.Log("现在是Gameplay");
-                }
-        }
-        public void OnGameMenu(InputAction.CallbackContext context) {
-                if (context.phase == InputActionPhase.Started) {
-                        Debug.Log("现在是GameMenu");
-                }
-        }
+
         #region Input Actions of GameMenu
         public void OnESC(InputAction.CallbackContext context) {
                 if (context.phase == InputActionPhase.Started) {

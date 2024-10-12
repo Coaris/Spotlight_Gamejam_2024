@@ -17,7 +17,6 @@ public class GameMenuManager : MonoBehaviour {
         //selected tab
         private Tab activingTab;
 
-
         private void Awake() {
                 gameMenu = transform.GetChild(0).gameObject;
                 if (tabs != null) {
@@ -25,9 +24,11 @@ public class GameMenuManager : MonoBehaviour {
                 }
         }
 
+        //外部调用的打开菜单
         public void OpenGameMenu() {
                 gameMenu.SetActive(true);
         }
+        //外部调用的关闭菜单
         public void CloseGameMenu() {
                 gameMenu.SetActive(false);
         }
@@ -61,7 +62,11 @@ public class GameMenuManager : MonoBehaviour {
 
         //选择该标签
         public void SelectTab(Tab tab) {
+                //事件触发
+                if (activingTab != null) { activingTab.OnDeselected(); }
                 activingTab = tab;
+                activingTab.OnSelected();
+                //视觉与逻辑切换
                 ResetTabs();
                 ActiveTab(activingTab);
         }
