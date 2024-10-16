@@ -24,18 +24,18 @@ public class PlayerController : MonoBehaviour {
 
         #region Input Actions of Movement
         public void OnDirection(InputAction.CallbackContext context) {
-                if (playerMovement.canMove) {
-                        playerMovement.Move(context.ReadValue<Vector2>());
-                        
-                }
+                playerMovement.Move(context.ReadValue<Vector2>());
         }
         public void OnJump(InputAction.CallbackContext context) {
-                if (playerMovement.canJump && context.phase == InputActionPhase.Started) {
-                        playerMovement.Jump();
+                if (context.phase == InputActionPhase.Started ) {
+                        playerMovement.JumpStart();
+                }
+                else if ((context.phase == InputActionPhase.Canceled)) {
+                        playerMovement.JumpEnd();
                 }
         }
         public void OnDash(InputAction.CallbackContext context) {
-                if (playerMovement.canDash && context.phase == InputActionPhase.Started) {
+                if (context.phase == InputActionPhase.Started) {
                         playerMovement.Dash();
                 }
         }
