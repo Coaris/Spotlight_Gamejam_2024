@@ -7,9 +7,9 @@ public class PlayerAnimator : MonoBehaviour {
         private Animator anim;
         private SpriteRenderer spriteRend;
 
-        [Header("Movement Tilt")]
-        [SerializeField] private float maxTilt;
-        [SerializeField][Range(0, 1)] private float tiltSpeed;
+        //[Header("Movement Tilt")]
+        //[SerializeField] private float maxTilt;
+        //[SerializeField][Range(0, 1)] private float tiltSpeed;
 
         [Header("Particle FX")]
         [SerializeField] private GameObject jumpFX;
@@ -54,10 +54,10 @@ public class PlayerAnimator : MonoBehaviour {
 
                 CheckAnimationState();
 
-                ParticleSystem.MainModule jumpPSettings = _jumpParticle.main;
-                jumpPSettings.startColor = dustColor;
-                ParticleSystem.MainModule landPSettings = _landParticle.main;
-                landPSettings.startColor = dustColor;
+                //ParticleSystem.MainModule jumpPSettings = _jumpParticle.main;
+                //jumpPSettings.startColor = dustColor;
+                //ParticleSystem.MainModule landPSettings = _landParticle.main;
+                //landPSettings.startColor = dustColor;
         }
 
         private void CheckAnimationState() {
