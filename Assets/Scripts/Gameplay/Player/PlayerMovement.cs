@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
 
         #region COMPONENTS
         public Rigidbody2D RB { get; private set; }
+        public PlayerController playerController { get; private set; }
         //Script to handle all player animations, all references can be safely removed if you're importing into your own project.
         public PlayerAnimator AnimHandler { get; private set; }//////////////////////////////////////////////////////
         #endregion
@@ -76,14 +77,18 @@ public class PlayerMovement : MonoBehaviour {
         [SerializeField] private LayerMask _groundLayer;
         #endregion
 
+        private float fallSpeedYDampingChangeThreshold;
         private void Awake() {
                 RB = GetComponent<Rigidbody2D>();
+                playerController = GetComponent<PlayerController>();
                 AnimHandler = GetComponent<PlayerAnimator>();
         }
 
         private void Start() {
                 SetGravityScale(Data.gravityScale);
                 IsFacingRight = true;
+
+                fallSpeedYDampingChangeThreshold = CameraManager.instance.fallSpeedYDampingChangeThreshold;
         }
 
         private void Update() {
@@ -251,6 +256,19 @@ public class PlayerMovement : MonoBehaviour {
                         //No gravity when dashing (returns to normal once initial dashAttack phase over)
                         SetGravityScale(0);
                 }
+                #endregion
+
+                #region CAMERA
+                if (RB.velocity.y < fallSpeedYDampingChangeThreshold && !CameraManager.instance.IsLerpingYDamping && !CameraManager.instance.LerpedFromPlayerFalling) {
+                        CameraManager.instance.LerpYDamping(true);
+                }
+
+                if ((RB.velocity.y >= 0f && !CameraManager.instance.IsLerpingYDamping && CameraManager.instance.LerpedFromPlayerFalling)) {
+                        CameraManager.instance.LerpedFromPlayerFalling = false;
+
+                        CameraManager.instance.LerpYDamping(false);
+                }
+
                 #endregion
         }
 
@@ -491,11 +509,12 @@ public class PlayerMovement : MonoBehaviour {
         }
         #endregion
 
-
         #region CHECK METHODS
         public void CheckDirectionToFace(bool isMovingRight) {
-                if (isMovingRight != IsFacingRight)
+                if (isMovingRight != IsFacingRight) {
                         Turn();
+                        //playerController.OnFlip();
+                }
         }
 
         private bool CanJump() {
@@ -530,7 +549,6 @@ public class PlayerMovement : MonoBehaviour {
                         return false;
         }
         #endregion
-
 
         #region EDITOR METHODS
         private void OnDrawGizmosSelected() {
