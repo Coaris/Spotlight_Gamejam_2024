@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+//using Cinemachine;
 
 public class PlayerController : MonoBehaviour {
         private PlayerController instance;
@@ -12,6 +13,10 @@ public class PlayerController : MonoBehaviour {
         private GameMenuManager gameMenu;
         private bool isOpeningGameMenu;
 
+        
+        //private CinemachineBrain cineBrain;
+        //private CinemachineVirtualCamera currentCamera;
+
         private void Awake() {
                 if (instance == null) instance = this;
                 else Destroy(gameObject);
@@ -20,6 +25,8 @@ public class PlayerController : MonoBehaviour {
                 gameMenu = FindAnyObjectByType<GameMenuManager>();
                 playerInput = GetComponent<PlayerInput>();
                 playerMovement = GetComponent<PlayerMovement>();
+                //cineBrain = Camera.main.GetComponent<CinemachineBrain>();
+                //OnFlip(playerMovement.IsFacingRight);
         }
 
         #region Input Actions of Movement
@@ -27,7 +34,7 @@ public class PlayerController : MonoBehaviour {
                 playerMovement.Move(context.ReadValue<Vector2>());
         }
         public void OnJump(InputAction.CallbackContext context) {
-                if (context.phase == InputActionPhase.Started ) {
+                if (context.phase == InputActionPhase.Started) {
                         playerMovement.JumpStart();
                 }
                 else if ((context.phase == InputActionPhase.Canceled)) {
@@ -71,4 +78,21 @@ public class PlayerController : MonoBehaviour {
         private void SwitchInputMap(string mapName) {
                 playerInput.currentActionMap = playerInput.actions.FindActionMap(mapName);
         }
+
+        //#region Camera
+        //public void OnFlip(bool isFacingRight) {
+        //        GetCurrentCamera();
+        //        currentCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x =
+        //}
+
+        //private void GetCurrentCamera() {
+        //        currentCamera = cineBrain.ActiveVirtualCamera as CinemachineVirtualCamera;
+        //        if (currentCamera != null) {
+        //                Debug.Log(currentCamera.Name);
+        //        }
+        //        else {
+        //                Debug.Log("当前没有相机");
+        //        }
+        //}
+        //#endregion
 }
