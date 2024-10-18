@@ -179,7 +179,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerSprite
+  m_Name: Player_Sprite
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Jump
@@ -235,6 +235,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &5181899209456836258
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player_Die
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: a851310253925424bb752675917e8475, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -358,13 +384,16 @@ AnimatorStateMachine:
     m_Position: {x: 590, y: 400, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4017435814663835843}
-    m_Position: {x: 625, y: 465, z: 0}
+    m_Position: {x: -240, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6127182312101238395}
-    m_Position: {x: 660, y: 530, z: 0}
+    m_Position: {x: 700, y: 510, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8743159169030744132}
-    m_Position: {x: 695, y: 595, z: 0}
+    m_Position: {x: 700, y: 570, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 5181899209456836258}
+    m_Position: {x: 735, y: 635, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 6917107446921762817}
