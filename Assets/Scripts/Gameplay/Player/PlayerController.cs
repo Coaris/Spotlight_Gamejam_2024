@@ -5,25 +5,46 @@ using UnityEngine.InputSystem;
 //using Cinemachine;
 
 public class PlayerController : MonoBehaviour {
-        private PlayerController instance;
+        public static PlayerController Instance { get; private set; }
 
         private PlayerInput playerInput;
         private PlayerMovement playerMovement;
+        private Rigidbody2D rb;
 
         private GameMenuManager gameMenu;
         private bool isOpeningGameMenu;
 
-        
+        //进入新场景走一小段距离，或从下方跳出来
+        //public IEnumerator WalkIntoNewMap(Vector2 exitDir, float delay) {
+        //        playerInput.enabled = false;
+        //        if (exitDir.y > 0) {
+        //                rb.AddForce(Vector2.up * playerMovement.Data.jumpForce, ForceMode2D.Impulse);
+        //        }
+
+        //        if (exitDir.x != 0) {
+        //                playerMovement.Move(new Vector2(exitDir.x, 0));
+        //        }
+        //        yield return new WaitForSeconds(delay);
+        //        //playerMovement.Move(Vector2.zero);
+        //        playerInput.enabled = true;
+        //}
+
         //private CinemachineBrain cineBrain;
         //private CinemachineVirtualCamera currentCamera;
 
         private void Awake() {
-                if (instance == null) instance = this;
-                else Destroy(gameObject);
+                if (Instance != null && Instance != this) {
+                        Destroy(gameObject);
+                }
+                else {
+                        Instance = this;
+                }
+                //DontDestroyOnLoad(gameObject);
         }
         private void Start() {
                 gameMenu = FindAnyObjectByType<GameMenuManager>();
                 playerInput = GetComponent<PlayerInput>();
+                rb = GetComponent<Rigidbody2D>();
                 playerMovement = GetComponent<PlayerMovement>();
                 //cineBrain = Camera.main.GetComponent<CinemachineBrain>();
                 //OnFlip(playerMovement.IsFacingRight);
