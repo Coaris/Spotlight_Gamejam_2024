@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameMenuManager : MonoBehaviour {
+        public static GameMenuManager Instance { get; private set; }
+
         //UI of GameMenu
         private GameObject gameMenu;
         //tab's sprites
@@ -17,7 +19,18 @@ public class GameMenuManager : MonoBehaviour {
         //selected tab
         private Tab activingTab;
 
+        public MapLoadFader mapLoadFader;
+
         private void Awake() {
+                if (Instance != null && Instance != this) {
+                        Destroy(gameObject);
+                }
+                else {
+                        Instance = this;
+                        DontDestroyOnLoad(gameObject);
+                }
+
+
                 gameMenu = transform.GetChild(0).gameObject;
                 if (tabs != null) {
                         activingTab = tabs[0];
