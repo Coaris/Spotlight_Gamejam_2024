@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
         private PlayerInput playerInput;
         private PlayerMovement playerMovement;
         private Rigidbody2D rb;
+        //public Player Player { get; private set; }
 
         private GameMenuManager gameMenu;
         private bool isOpeningGameMenu;

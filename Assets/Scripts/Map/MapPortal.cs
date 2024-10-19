@@ -13,7 +13,7 @@ public class MapPortal : MonoBehaviour {
         [SerializeField] private Vector2 exitDirection;
         [SerializeField] private float exitTime;
 
-        private IEnumerator LoadNeMap;
+        //private IEnumerator LoadNeMap;
 
 
         private void OnTriggerEnter2D(Collider2D collision) {
@@ -31,6 +31,7 @@ public class MapPortal : MonoBehaviour {
         }
 
         private IEnumerator LoadNewMap(SceneAsset scene) {
+                PlayerStatusManager.Instance.UpdateStatus();
                 GameMenuManager.Instance.mapLoadFader.FadeOut();
                 yield return new WaitForSeconds(0.3f);
                 AsyncOperation async = SceneManager.LoadSceneAsync(scene.name);

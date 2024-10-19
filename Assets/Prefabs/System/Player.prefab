@@ -121,6 +121,8 @@ GameObject:
   - component: {fileID: 8191069864930239360}
   - component: {fileID: 642119647791238587}
   - component: {fileID: 3328338177894849524}
+  - component: {fileID: 8712153557843990621}
+  - component: {fileID: 1171134178673106542}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -143,7 +145,7 @@ Transform:
   - {fileID: 7404114880856003913}
   - {fileID: 8977624249230009616}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &6047403144722462761
 BoxCollider2D:
@@ -420,6 +422,35 @@ MonoBehaviour:
   landFX: {fileID: 6501943191250486917, guid: 343dd285a180dcb49aadf7d0bc4c3d2d, type: 3}
   dustColor: {r: 1, g: 1, b: 1, a: 0}
   currentVelY: 0
+--- !u!114 &8712153557843990621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123348169487138073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 916cb66a992ea4442aeab63e30145cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 3
+  currentHP: 3
+--- !u!114 &1171134178673106542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123348169487138073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d93806538f23b04cb1329be4e14b39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsCheckPoint:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &5846036587307271516
 GameObject:
   m_ObjectHideFlags: 0
