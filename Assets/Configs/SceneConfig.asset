@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: SceneConfig
   m_EditorClassIdentifier: 
   MainMenu: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
-  Settings: {fileID: 102900000, guid: 7915e42864ee15c4b944bd25264f10d3, type: 3}
-  Credits: {fileID: 102900000, guid: 9d81a1a51ae06654bb392ff957a3ba6d, type: 3}
-  NewGame: {fileID: 102900000, guid: ed4a6fd345a160e47a74308baff0b86b, type: 3}
+  NewGame: {fileID: 102900000, guid: 53eaab302aa86754b997a5f630948b4c, type: 3}
