@@ -136,13 +136,25 @@ public class PlayerMovement : MonoBehaviour {
 
                         //Right Wall Check
                         if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)
-                                        || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && !IsFacingRight)) && !IsWallJumping)
-                                LastOnWallRightTime = Data.coyoteTime;
+                                || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && !IsFacingRight)) && !IsWallJumping) {
 
-                        //Right Wall Check
+                                LastOnWallRightTime = Data.coyoteTime;
+                                AnimHandler.isTouchingRightWall = true;
+                        }
+                        else {
+                                AnimHandler.isTouchingRightWall = false;
+                        }
+
+                        //Left Wall Check
                         if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && !IsFacingRight)
-                                || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)) && !IsWallJumping)
+                                || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)) && !IsWallJumping) {
+
                                 LastOnWallLeftTime = Data.coyoteTime;
+                                AnimHandler.isTouchingLeftWall = true;
+                        }
+                        else {
+                                AnimHandler.isTouchingLeftWall = false;
+                        }
 
                         //Two checks needed for both left and right walls since whenever the play turns the wall checkPoints swap sides
                         LastOnWallTime = Mathf.Max(LastOnWallLeftTime, LastOnWallRightTime);
@@ -175,7 +187,7 @@ public class PlayerMovement : MonoBehaviour {
                                 _isJumpFalling = false;
                                 Jump();
 
-                                AnimHandler.startedJumping = true;/////////////////
+                                AnimHandler.startedJumping = true;
                         }
                         //WALL JUMP
                         else if (CanWallJump() && LastPressedJumpTime > 0) {
@@ -188,6 +200,8 @@ public class PlayerMovement : MonoBehaviour {
                                 _lastWallJumpDir = (LastOnWallRightTime > 0) ? -1 : 1;
 
                                 WallJump(_lastWallJumpDir);
+
+                                AnimHandler.startedJumping = true;
                         }
                 }
                 #endregion
@@ -215,8 +229,10 @@ public class PlayerMovement : MonoBehaviour {
                 #endregion
 
                 #region SLIDE CHECKS
-                if (CanSlide() && ((LastOnWallLeftTime > 0 && _moveInput.x < 0) || (LastOnWallRightTime > 0 && _moveInput.x > 0)))
+                if (CanSlide() && ((LastOnWallLeftTime > 0 && _moveInput.x < 0) || (LastOnWallRightTime > 0 && _moveInput.x > 0))) {
                         IsSliding = true;
+                }
+
                 else
                         IsSliding = false;
                 #endregion
@@ -258,18 +274,18 @@ public class PlayerMovement : MonoBehaviour {
                 }
                 #endregion
 
-                #region CAMERA
-                if (RB.velocity.y < fallSpeedYDampingChangeThreshold && !CameraManager.instance.IsLerpingYDamping && !CameraManager.instance.LerpedFromPlayerFalling) {
-                        CameraManager.instance.LerpYDamping(true);
-                }
+                //#region CAMERA
+                //if (RB.velocity.y < fallSpeedYDampingChangeThreshold && !CameraManager.instance.IsLerpingYDamping && !CameraManager.instance.LerpedFromPlayerFalling) {
+                //        CameraManager.instance.LerpYDamping(true);
+                //}
 
-                if ((RB.velocity.y >= 0f && !CameraManager.instance.IsLerpingYDamping && CameraManager.instance.LerpedFromPlayerFalling)) {
-                        CameraManager.instance.LerpedFromPlayerFalling = false;
+                //if ((RB.velocity.y >= 0f && !CameraManager.instance.IsLerpingYDamping && CameraManager.instance.LerpedFromPlayerFalling)) {
+                //        CameraManager.instance.LerpedFromPlayerFalling = false;
 
-                        CameraManager.instance.LerpYDamping(false);
-                }
+                //        CameraManager.instance.LerpYDamping(false);
+                //}
 
-                #endregion
+                //#endregion
         }
 
         private void FixedUpdate() {
@@ -285,8 +301,10 @@ public class PlayerMovement : MonoBehaviour {
                 }
 
                 //Handle Slide
-                if (IsSliding)
+                if (IsSliding) {
                         Slide();
+                        //AnimHandler.justSlide = true;///////////////////////////////////////////////////////////////////////////
+                }
         }
 
         #region ÕÊº“ ‰»Î

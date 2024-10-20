@@ -21,8 +21,11 @@ public class PlayerAnimator : MonoBehaviour {
 
         public bool startedJumping { private get; set; }
         public bool justLanded { private get; set; }
+        public bool isTouchingRightWall { private get; set; }
+        public bool isTouchingLeftWall { private get; set; }
 
-        public float currentVelY;
+        //[HideInInspector] public float currentVelY;
+        //[HideInInspector] public float currentVelX;
 
         private void Start() {
                 mov = GetComponent<PlayerMovement>();
@@ -61,6 +64,7 @@ public class PlayerAnimator : MonoBehaviour {
         }
 
         private void CheckAnimationState() {
+
                 if (startedJumping) {
                         anim.SetTrigger("Jump");
                         GameObject obj = Instantiate(jumpFX, transform.position - (Vector3.up * transform.localScale.y / 2), Quaternion.Euler(-90, 0, 0));
@@ -77,6 +81,21 @@ public class PlayerAnimator : MonoBehaviour {
                         return;
                 }
 
+                if (isTouchingRightWall || isTouchingLeftWall) {
+                        anim.SetBool("IsTouchingWall", true);
+                }
+                else {
+                        anim.SetBool("IsTouchingWall", false);
+                }
+
+                //if (justSlide) {
+                //        anim.SetTrigger("Slide");
+                //        justSlide = false;
+                //        return;
+                //}
+                //////////–¥µ¿’‚¿Ô
+
                 anim.SetFloat("Vel Y", mov.RB.velocity.y);
+                anim.SetFloat("Vel X", Mathf.Abs(mov.RB.velocity.x));
         }
 }
