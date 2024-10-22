@@ -66,8 +66,9 @@ public class PlayerController : MonoBehaviour {
                                         break;
                                 case InteractType.SavePoint:
                                         //±£´æ
-                                        Debug.Log("±£´æ");
                                         GameManager.Instance.SaveGame();
+                                        //»ØÑª
+                                        player.Heal(Player.GetMaxHP());
                                         break;
                         }
                 }

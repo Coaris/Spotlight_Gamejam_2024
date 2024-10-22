@@ -34,6 +34,11 @@ public class Player : MonoBehaviour {
                         hit(isFallDamage);
                 }
         }
+
+        public void Heal(int heal) {
+                currentHP = Mathf.Clamp(currentHP + heal, 0, maxHP);
+                GUIManager.Instance.UpdateHP(currentHP);
+        }
         private void Dead() {
                 GameManager.Instance.LoadGame();
                 //≤•∑≈À¿Õˆ∂Øª≠

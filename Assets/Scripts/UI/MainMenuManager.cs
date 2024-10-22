@@ -19,6 +19,11 @@ public class MainMenuManager : MonoBehaviour {
                 PlayerStatusManager.Instance.SetStatusNewGame();
                 SceneManager.LoadScene(sceneConfig.NewGame.name);
         }
+
+        public void OnLoadGame() {
+                GameManager.Instance.LoadGame();
+                GameManager.Instance.LoadGameReburn();
+        }
         #endregion
 
         #region ²Ëµ¥ÇÐ»»
