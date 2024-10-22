@@ -10,10 +10,13 @@ public class PlayerController : MonoBehaviour {
         private PlayerInput playerInput;
         private PlayerMovement playerMovement;
         private Rigidbody2D rb;
+        private Player player;
         //public Player Player { get; private set; }
 
         private GameMenuManager gameMenu;
         private bool isOpeningGameMenu;
+
+        public InteractType interactType { set; private get; }
 
         //进入新场景走一小段距离，或从下方跳出来
         //public IEnumerator WalkIntoNewMap(Vector2 exitDir, float delay) {
@@ -45,11 +48,33 @@ public class PlayerController : MonoBehaviour {
         private void Start() {
                 gameMenu = FindAnyObjectByType<GameMenuManager>();
                 playerInput = GetComponent<PlayerInput>();
+                player = GetComponent<Player>();
                 rb = GetComponent<Rigidbody2D>();
                 playerMovement = GetComponent<PlayerMovement>();
                 //cineBrain = Camera.main.GetComponent<CinemachineBrain>();
                 //OnFlip(playerMovement.IsFacingRight);
         }
+
+        #region Input Actions of Interaction
+        public void OnInteract(InputAction.CallbackContext context) {
+                if (context.phase == InputActionPhase.Started) {
+                        switch (interactType) {
+                                case InteractType.None:
+                                        //禁用移动
+                                        //释放孢子
+                                        Debug.Log("释放光孢子");
+                                        break;
+                                case InteractType.SavePoint:
+                                        //保存
+                                        Debug.Log("保存");
+                                        GameManager.Instance.SaveGame();
+                                        break;
+                        }
+                }
+        }
+
+
+        #endregion
 
         #region Input Actions of Movement
         public void OnDirection(InputAction.CallbackContext context) {
@@ -117,4 +142,9 @@ public class PlayerController : MonoBehaviour {
         //        }
         //}
         //#endregion
+}
+
+public enum InteractType {
+        None,
+        SavePoint
 }

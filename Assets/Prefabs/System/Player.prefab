@@ -368,6 +368,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: dbd58cd0-f36a-48ea-a228-a4448e73eeeb
     m_ActionName: Gameplay/Dash[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8191069864930239360}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 71cec7aa-3fc5-4785-b26e-280ea33b91a2
+    m_ActionName: Gameplay/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Gameplay
@@ -421,7 +437,6 @@ MonoBehaviour:
   jumpFX: {fileID: 6501943191250486917, guid: 343dd285a180dcb49aadf7d0bc4c3d2d, type: 3}
   landFX: {fileID: 6501943191250486917, guid: 343dd285a180dcb49aadf7d0bc4c3d2d, type: 3}
   dustColor: {r: 1, g: 1, b: 1, a: 0}
-  currentVelY: 0
 --- !u!114 &8712153557843990621
 MonoBehaviour:
   m_ObjectHideFlags: 0
