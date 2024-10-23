@@ -31,7 +31,7 @@ public class MapPortal : MonoBehaviour {
         }
 
         private IEnumerator LoadNewMap(SceneAsset scene) {
-                PlayerStatusManager.Instance.UpdateStatus();
+                PlayerStatusManager.Instance.WriteStatus();
                 GameMenuManager.Instance.mapLoadFader.FadeOut();
                 yield return new WaitForSeconds(0.3f);
                 AsyncOperation async = SceneManager.LoadSceneAsync(scene.name);

@@ -10,10 +10,14 @@ public class PlayerController : MonoBehaviour {
         private PlayerInput playerInput;
         private PlayerMovement playerMovement;
         private Rigidbody2D rb;
+        private Player player;
+        private LightController lightController;
         //public Player Player { get; private set; }
 
         private GameMenuManager gameMenu;
         private bool isOpeningGameMenu;
+
+        public InteractType interactType { set; private get; }
 
         //进入新场景走一小段距离，或从下方跳出来
         //public IEnumerator WalkIntoNewMap(Vector2 exitDir, float delay) {
@@ -43,13 +47,51 @@ public class PlayerController : MonoBehaviour {
                 //DontDestroyOnLoad(gameObject);
         }
         private void Start() {
+                Cursor.visible = false;
                 gameMenu = FindAnyObjectByType<GameMenuManager>();
                 playerInput = GetComponent<PlayerInput>();
+                player = GetComponent<Player>();
                 rb = GetComponent<Rigidbody2D>();
                 playerMovement = GetComponent<PlayerMovement>();
                 //cineBrain = Camera.main.GetComponent<CinemachineBrain>();
                 //OnFlip(playerMovement.IsFacingRight);
         }
+
+
+        #region Actions of Light
+        public void BindLight(LightController _light) {
+                lightController = _light;
+        }
+
+        public void OnLightMove(InputAction.CallbackContext context) {
+                //light.transform.position += (Vector3)context.ReadValue<Vector2>() / 100;
+                lightController.GetMouseOnScreen(context.ReadValue<Vector2>());
+        }
+
+        #endregion
+
+
+        #region Input Actions of Interaction
+        public void OnInteract(InputAction.CallbackContext context) {
+                if (context.phase == InputActionPhase.Started) {
+                        switch (interactType) {
+                                case InteractType.None:
+                                        //禁用移动
+                                        //释放孢子
+                                        Debug.Log("释放光孢子");
+                                        break;
+                                case InteractType.SavePoint:
+                                        //保存
+                                        GameManager.Instance.SaveGame();
+                                        //回血
+                                        player.Heal(Player.GetMaxHP());
+                                        break;
+                        }
+                }
+        }
+
+
+        #endregion
 
         #region Input Actions of Movement
         public void OnDirection(InputAction.CallbackContext context) {
@@ -74,11 +116,13 @@ public class PlayerController : MonoBehaviour {
         public void OnESC(InputAction.CallbackContext context) {
                 if (context.phase == InputActionPhase.Started) {
                         if (!isOpeningGameMenu) {
+                                Cursor.visible = true;
                                 isOpeningGameMenu = true;
                                 SwitchInputMap("GameMenu");
                                 gameMenu.OpenGameMenu();
                         }
                         else {
+                                Cursor.visible = false;
                                 isOpeningGameMenu = false;
                                 SwitchInputMap("Gameplay");
                                 gameMenu.CloseGameMenu();
@@ -117,4 +161,9 @@ public class PlayerController : MonoBehaviour {
         //        }
         //}
         //#endregion
+}
+
+public enum InteractType {
+        None,
+        SavePoint
 }
