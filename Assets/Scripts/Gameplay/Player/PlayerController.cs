@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
         private PlayerMovement playerMovement;
         private Rigidbody2D rb;
         private Player player;
-        private LightController lightController;
+        //private LightController lightController;
         //public Player Player { get; private set; }
 
         private GameMenuManager gameMenu;
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
                 //DontDestroyOnLoad(gameObject);
         }
         private void Start() {
-                Cursor.visible = false;
+                //Cursor.visible = false;
                 gameMenu = FindAnyObjectByType<GameMenuManager>();
                 playerInput = GetComponent<PlayerInput>();
                 player = GetComponent<Player>();
@@ -59,13 +59,13 @@ public class PlayerController : MonoBehaviour {
 
 
         #region Actions of Light
-        public void BindLight(LightController _light) {
-                lightController = _light;
-        }
+        //public void BindLight(LightController _light) {
+        //        lightController = _light;
+        //}
 
         public void OnLightMove(InputAction.CallbackContext context) {
                 //light.transform.position += (Vector3)context.ReadValue<Vector2>() / 100;
-                lightController.GetMouseOnScreen(context.ReadValue<Vector2>());
+                //lightController.GetMouseOnScreen(context.ReadValue<Vector2>());
         }
 
         #endregion
@@ -116,13 +116,13 @@ public class PlayerController : MonoBehaviour {
         public void OnESC(InputAction.CallbackContext context) {
                 if (context.phase == InputActionPhase.Started) {
                         if (!isOpeningGameMenu) {
-                                Cursor.visible = true;
+                                //Cursor.visible = true;
                                 isOpeningGameMenu = true;
                                 SwitchInputMap("GameMenu");
                                 gameMenu.OpenGameMenu();
                         }
                         else {
-                                Cursor.visible = false;
+                                //Cursor.visible = false;
                                 isOpeningGameMenu = false;
                                 SwitchInputMap("Gameplay");
                                 gameMenu.CloseGameMenu();
