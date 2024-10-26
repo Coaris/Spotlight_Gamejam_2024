@@ -30,12 +30,15 @@ public class PlayerMovement : MonoBehaviour {
         public bool IsWallJumping { get; private set; }
         public bool IsDashing { get; private set; }
         public bool IsSliding { get; private set; }
+        public bool IsAttacking { private get; set; }
 
         //Timers (also all fields, could be private and a method returning a bool could be used)
         public float LastOnGroundTime { get; private set; }
         public float LastOnWallTime { get; private set; }
         public float LastOnWallRightTime { get; private set; }
         public float LastOnWallLeftTime { get; private set; }
+
+        public bool IsOnGround { get; private set; }
 
         //Jump
         private bool _isJumpCut;
@@ -55,6 +58,7 @@ public class PlayerMovement : MonoBehaviour {
 
         #region INPUT PARAMETERS
         private Vector2 _moveInput;
+        private float _backForce;
 
         public float LastPressedJumpTime { get; private set; }
         public float LastPressedDashTime { get; private set; }
@@ -123,10 +127,19 @@ public class PlayerMovement : MonoBehaviour {
                 #endregion
 
                 #region COLLISION CHECKS
+                if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer)) //checks if set box overlaps with ground
+                        {
+                        IsOnGround = true;
+                }
+                else {
+                        IsOnGround = false;
+                }
+
+
                 if (!IsDashing && !IsJumping) {
                         //Ground Check
-                        if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer)) //checks if set box overlaps with ground
-                        {
+                        //if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer)) //checks if set box overlaps with ground
+                        if (IsOnGround) {
                                 if (LastOnGroundTime < -0.1f) {
                                         AnimHandler.justLanded = true;
                                 }
@@ -238,6 +251,11 @@ public class PlayerMovement : MonoBehaviour {
                 #endregion
 
                 #region GRAVITY
+                if (IsAttacking) {
+                        SetGravityScale(Data.gravityScale * 2);
+                        return;
+                }
+
                 if (!_isDashAttacking) {
                         //Higher gravity if we've released the jump input or are falling
                         if (IsSliding) {
@@ -334,11 +352,18 @@ public class PlayerMovement : MonoBehaviour {
         public void OnDashInput() {
                 LastPressedDashTime = Data.dashInputBufferTime;
         }
+
+        public void SetBackForce(float force) {
+                _backForce = force;
+        }
         #endregion
 
         #region GENERAL METHODS
         public void SetGravityScale(float scale) {
                 RB.gravityScale = scale;
+                if (IsAttacking && scale == Data.gravityScale * Data.jumpHangGravityMult) {
+                        Debug.Log("111");
+                }
         }
 
         private void Sleep(float duration) {
@@ -359,7 +384,7 @@ public class PlayerMovement : MonoBehaviour {
         #region RUN METHODS
         private void Run(float lerpAmount) {
                 //计算我们希望移动的方向和期望的速度。
-                float targetSpeed = _moveInput.x * Data.runMaxSpeed;
+                float targetSpeed = (_moveInput.x + _backForce) * Data.runMaxSpeed;
                 //我们可以使用 Lerp() 来减少控制，这样可以平滑方向和速度的变化。
                 targetSpeed = Mathf.Lerp(RB.velocity.x, targetSpeed, lerpAmount);
 

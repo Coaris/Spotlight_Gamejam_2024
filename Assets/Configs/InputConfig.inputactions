@@ -187,13 +187,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LightMove",
-                    "type": "Value",
-                    "id": "86ca9139-3c5b-465c-8fe7-a017631e145c",
-                    "expectedControlType": "Vector2",
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "0061e338-6e25-493b-a6cb-077d62144cb7",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -298,12 +298,12 @@
                 },
                 {
                     "name": "",
-                    "id": "f3bc16c7-6707-4a19-92ba-77aae7736e12",
-                    "path": "<Mouse>/position",
+                    "id": "25a707e2-d6b6-44a8-b832-9c3634ab9436",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "LightMove",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

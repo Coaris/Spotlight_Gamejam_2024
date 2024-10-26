@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
 
         private PlayerInput playerInput;
         private PlayerMovement playerMovement;
+        private PlayerAttack playerAttack;
         private Rigidbody2D rb;
         private Player player;
         //private LightController lightController;
@@ -53,19 +54,17 @@ public class PlayerController : MonoBehaviour {
                 player = GetComponent<Player>();
                 rb = GetComponent<Rigidbody2D>();
                 playerMovement = GetComponent<PlayerMovement>();
+                playerAttack = GetComponent<PlayerAttack>();
                 //cineBrain = Camera.main.GetComponent<CinemachineBrain>();
                 //OnFlip(playerMovement.IsFacingRight);
         }
 
 
-        #region Actions of Light
-        //public void BindLight(LightController _light) {
-        //        lightController = _light;
-        //}
-
-        public void OnLightMove(InputAction.CallbackContext context) {
-                //light.transform.position += (Vector3)context.ReadValue<Vector2>() / 100;
-                //lightController.GetMouseOnScreen(context.ReadValue<Vector2>());
+        #region Actions of Attack
+        public void OnAttack(InputAction.CallbackContext context) {
+                if (context.phase == InputActionPhase.Started) {
+                        playerAttack.Attack();
+                }
         }
 
         #endregion

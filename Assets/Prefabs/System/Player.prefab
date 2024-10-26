@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 3328338177894849524}
   - component: {fileID: 8712153557843990621}
   - component: {fileID: 1171134178673106542}
+  - component: {fileID: 4141501321702287636}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -384,6 +385,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 71cec7aa-3fc5-4785-b26e-280ea33b91a2
     m_ActionName: Gameplay/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8191069864930239360}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0061e338-6e25-493b-a6cb-077d62144cb7
+    m_ActionName: Gameplay/Attack[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Gameplay
@@ -464,6 +481,20 @@ MonoBehaviour:
   whatIsCheckPoint:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &4141501321702287636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123348169487138073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56f40af7d6baa14397bf5b7be59de8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backForce: 20
+  backForceTime: 0.3
 --- !u!1 &5846036587307271516
 GameObject:
   m_ObjectHideFlags: 0
