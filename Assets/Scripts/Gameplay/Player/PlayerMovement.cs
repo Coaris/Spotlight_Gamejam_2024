@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour {
         //just paste in all the parameters, though you will need to manuly change all references in this script
         public PlayerConfig Data;
 
+        [SerializeField] private Transform sprite;
+
         #region COMPONENTS
         public Rigidbody2D RB { get; private set; }
         public PlayerController playerController { get; private set; }
@@ -361,9 +363,9 @@ public class PlayerMovement : MonoBehaviour {
         #region GENERAL METHODS
         public void SetGravityScale(float scale) {
                 RB.gravityScale = scale;
-                if (IsAttacking && scale == Data.gravityScale * Data.jumpHangGravityMult) {
-                        Debug.Log("111");
-                }
+                //if (IsAttacking && scale == Data.gravityScale * Data.jumpHangGravityMult) {
+                //        Debug.Log("111");
+                //}
         }
 
         private void Sleep(float duration) {
@@ -433,9 +435,10 @@ public class PlayerMovement : MonoBehaviour {
 
         private void Turn() {
                 //stores scale and flips the player along the x axis, 
-                Vector3 scale = transform.localScale;
+                Vector3 scale = sprite.localScale;
                 scale.x *= -1;
-                transform.localScale = scale;
+                //transform.localScale = scale;
+                sprite.localScale = scale;
 
                 IsFacingRight = !IsFacingRight;
         }
