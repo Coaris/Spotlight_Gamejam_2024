@@ -499,7 +499,7 @@ MonoBehaviour:
   ssa: {fileID: 7291027408711653381}
   backForce: 20
   backForceTime: 0.3
-  attackCD: 1
+  attackCD: 0.6
 --- !u!1 &5846036587307271516
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,7 +677,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 5.82, y: 5.88}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -718,9 +718,9 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 4.74, y: 3.2}
-    newSize: {x: 1.28, y: 1.28}
+    pivot: {x: 0.487, y: 0.2}
+    oldSize: {x: 5.88, y: 5.82}
+    newSize: {x: 5.82, y: 5.88}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

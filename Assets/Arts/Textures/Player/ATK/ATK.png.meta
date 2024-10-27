@@ -110,15 +110,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ATK_0
+      name: ATK_5
       rect:
         serializedVersion: 2
-        x: 582
-        y: 1176
-        width: 582
-        height: 588
+        x: 1176
+        y: 0
+        width: 588
+        height: 582
       alignment: 9
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.487, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: ATK_1
       rect:
         serializedVersion: 2
-        x: 1164
-        y: 1176
-        width: 582
-        height: 588
+        x: 588
+        y: 1164
+        width: 588
+        height: 582
       alignment: 9
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.487, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: ATK_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 588
-        width: 582
-        height: 588
+        x: 588
+        y: 582
+        width: 588
+        height: 582
       alignment: 9
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.487, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: ATK_3
       rect:
         serializedVersion: 2
-        x: 582
-        y: 588
-        width: 582
-        height: 588
+        x: 1176
+        y: 582
+        width: 588
+        height: 582
       alignment: 9
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.487, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: ATK_4
       rect:
         serializedVersion: 2
-        x: 1164
-        y: 588
-        width: 582
-        height: 588
+        x: 588
+        y: 0
+        width: 588
+        height: 582
       alignment: 9
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.487, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,22 +215,22 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ATK_5
+      name: ATK_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 582
-        height: 588
+        y: 1164
+        width: 588
+        height: 582
       alignment: 9
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.487, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31cdc50a6faa2574f9179e1c58628d74
-      internalID: 550874863
+      spriteID: 646d29090e736c544ab67041aabcb653
+      internalID: 1001578016
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ATK_0: 1721204966
+      ATK_0: 1001578016
       ATK_1: 1749933694
       ATK_2: -659188987
       ATK_3: -1263492555
       ATK_4: 1417068984
-      ATK_5: 550874863
+      ATK_5: 1721204966
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
