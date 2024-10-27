@@ -20,7 +20,7 @@ public class EnemyBase : MonoBehaviour {
                 hp -= _damage;
                 if (hp <= 0) {
                         //ËÀÍö
-                        Debug.Log("ËÀÁË");
+                        Dead();
                 }
                 else {
                         //ÊÜÉË
@@ -28,7 +28,7 @@ public class EnemyBase : MonoBehaviour {
                 }
         }
 
-        private void Dead() {
-
+        protected void Dead() {
+                anim.SetTrigger("Dead");
         }
 }

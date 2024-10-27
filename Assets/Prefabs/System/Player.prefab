@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 6990723345593595378}
   - component: {fileID: 7291027408711653381}
   m_Layer: 6
-  m_Name: AttackCheck
+  m_Name: ATKChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

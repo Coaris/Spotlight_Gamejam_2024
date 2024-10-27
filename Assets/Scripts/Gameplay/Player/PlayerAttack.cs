@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour {
         private PlayerMovement playerMovement;
 
         [SerializeField] private Transform attackCheck;
-        [SerializeField] private ShootSporeAnim ssa;
+        [SerializeField] private ATKChecker ssa;
 
         [SerializeField] float backForce = 1;
         [SerializeField] float backForceTime = 0.3f;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootSporeAnim : MonoBehaviour {
+public class ATKChecker: MonoBehaviour {
         [SerializeField] private Animator anim;
         [SerializeField] private PlayerAttack playerAttack;
         [SerializeField] private Collider2D coll;
@@ -21,10 +21,9 @@ public class ShootSporeAnim : MonoBehaviour {
 
         private void OnTriggerEnter2D(Collider2D collision) {
                 if (collision != null) {
-                        //if (collision.CompareTag("Player")) {
-                                
-                        //}
-                        //Debug.Log("000");
+                        if (collision.CompareTag("Enemy")) {
+                                collision.GetComponent<EnemyBase>().OnHit(1);
+                        }
                 }
         }
 }
