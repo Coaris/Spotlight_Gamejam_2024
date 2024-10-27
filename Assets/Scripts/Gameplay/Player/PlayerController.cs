@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
         private bool isOpeningGameMenu;
 
         public SavePoint currentSavePoint;
+        public ElderMush elderMush;
         public InteractType interactType { set; private get; }
 
         //进入新场景走一小段距离，或从下方跳出来
@@ -86,6 +87,9 @@ public class PlayerController : MonoBehaviour {
                                         currentSavePoint.ChangeSprite();
                                         //回血
                                         player.Heal(Player.GetMaxHP());
+                                        break;
+                                case InteractType.ElderMush:
+                                        elderMush.Talk();
                                         break;
                         }
                 }
@@ -166,5 +170,6 @@ public class PlayerController : MonoBehaviour {
 
 public enum InteractType {
         None,
-        SavePoint
+        SavePoint,
+        ElderMush
 }
