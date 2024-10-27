@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Rusher : EnemyBase, IPlayerCheck {
@@ -40,13 +41,24 @@ public class Rusher : EnemyBase, IPlayerCheck {
                 rb.velocity = move;
         }
 
+
+
         public void OnPlayerDetected() {
-                Debug.Log("玩家在视野中");
                 isAttacking = true;
                 anim.SetBool("IsAttacking", true);
         }
         public void OnPlayerLost() {
-                Debug.Log("丢失玩家视野");
+                StartCoroutine(ResetPatrol());
+        }
+
+        private IEnumerator ResetPatrol() {
+                yield return new WaitForSeconds(1);
+                if (isFacingRight) {
+                        move.x = moveSpeed;
+                }
+                else {
+                        move.x = -moveSpeed;
+                }
                 isAttacking = false;
                 anim.SetBool("IsAttacking", false);
         }
