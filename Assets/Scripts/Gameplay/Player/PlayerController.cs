@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
         private GameMenuManager gameMenu;
         private bool isOpeningGameMenu;
 
+        public SavePoint currentSavePoint;
         public InteractType interactType { set; private get; }
 
         //进入新场景走一小段距离，或从下方跳出来
@@ -82,6 +83,7 @@ public class PlayerController : MonoBehaviour {
                                 case InteractType.SavePoint:
                                         //保存
                                         GameManager.Instance.SaveGame();
+                                        currentSavePoint.ChangeSprite();
                                         //回血
                                         player.Heal(Player.GetMaxHP());
                                         break;
@@ -129,14 +131,14 @@ public class PlayerController : MonoBehaviour {
                 }
         }
         public void OnNextPage(InputAction.CallbackContext context) {
-                if (context.phase == InputActionPhase.Started) {
-                        gameMenu.OnNextPage();
-                }
+                //if (context.phase == InputActionPhase.Started) {
+                //        //gameMenu.OnNextPage();
+                //}
         }
         public void OnLastPage(InputAction.CallbackContext context) {
-                if (context.phase == InputActionPhase.Started) {
-                        gameMenu.OnLastPage();
-                }
+                //if (context.phase == InputActionPhase.Started) {
+                //        //gameMenu.OnLastPage();
+                //}
         }
         #endregion
 

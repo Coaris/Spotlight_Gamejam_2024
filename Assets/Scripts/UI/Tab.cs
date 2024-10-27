@@ -15,13 +15,13 @@ public class Tab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPo
 
         #region Interfaces
         public void OnPointerEnter(PointerEventData eventData) {
-                gameMenuManager.OnTabEnter(this);
+                //gameMenuManager.OnTabEnter(this);
         }
         public void OnPointerExit(PointerEventData eventData) {
-                gameMenuManager.OnTabExit(this);
+                //gameMenuManager.OnTabExit(this);
         }
         public void OnPointerClick(PointerEventData eventData) {
-                gameMenuManager.SelectTab(this);
+                //gameMenuManager.SelectTab(this);
         }
         #endregion
 

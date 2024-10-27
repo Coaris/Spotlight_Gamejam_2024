@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
         private PlayerMovement playerMovement;
         private Rigidbody2D rb;
         private PlayerInput playerInput;
+        [SerializeField] private SpriteRenderer spriteRenderer;
 
         private bool isInvicible;
 
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour {
                 if (isInvicible) return;
                 isInvicible = true;
                 currentHP -= _damage;
+                HitFlash();
                 if (currentHP <= 0) {
                         //Íæ¼ÒËÀÍö
                         currentHP = 0;
@@ -62,6 +64,17 @@ public class Player : MonoBehaviour {
                         KnockBack(_Xfrom);
                 }
         }
+
+        #region ÊÜ»÷ÉÁË¸
+        private void HitFlash() {
+                spriteRenderer.material.color = Color.red;
+                StartCoroutine(ResetHitFlash());
+        }
+        private IEnumerator ResetHitFlash() {
+                yield return new WaitForSeconds(0.1f);
+                spriteRenderer.material.color = Color.white;
+        }
+        #endregion
 
         #region ÊÜÉË±»»÷ÍË
         private void KnockBack(float _Xfrom) {
