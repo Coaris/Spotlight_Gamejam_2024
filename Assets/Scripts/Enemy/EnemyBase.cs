@@ -21,7 +21,7 @@ public class EnemyBase : MonoBehaviour {
         }
 
         #region ¼ì²â³¯Ïò
-        private void CheckFaceDirection(bool _isMovingRight) {
+        protected void CheckFaceDirection(bool _isMovingRight) {
                 if (_isMovingRight != isFacingRight) {
                         Turn();
                 }

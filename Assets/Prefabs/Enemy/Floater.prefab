@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4, y: 1.4}
+  m_Size: {x: 1.3, y: 1.3}
   m_EdgeRadius: 0
 --- !u!1 &261586001106942304
 GameObject:
@@ -130,7 +130,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7057994264009732435}
   sprite: {fileID: 8518557476516292581}
   rb: {fileID: 6009532265888788488}
-  speed: 1
+  speed: 2
   isUping: 1
   isRighting: 1
 --- !u!61 &3739255820069877266

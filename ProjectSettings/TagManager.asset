@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - PlayerCheck
+  - ExplodeCheck
   layers:
   - Default
   - TransparentFX

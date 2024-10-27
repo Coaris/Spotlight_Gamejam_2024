@@ -7,4 +7,8 @@ public class EnmeyAnimEvent : MonoBehaviour {
         public void OnDeadEnd() {
                 Destroy(root);
         }
+
+        public void OnExplode() {
+                root.GetComponent<IExplode>().OnExplode();
+        }
 }
