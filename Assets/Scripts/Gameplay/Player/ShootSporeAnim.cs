@@ -17,8 +17,6 @@ public class ShootSporeAnim : MonoBehaviour {
                 anim.SetTrigger("AttackEnd");
 
                 coll.enabled = false;
-
-                playerAttack.ShootSporeEnd();
         }
 
         private void OnTriggerEnter2D(Collider2D collision) {

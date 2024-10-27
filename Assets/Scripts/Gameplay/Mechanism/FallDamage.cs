@@ -8,7 +8,7 @@ public class FallDamage : MonoBehaviour {
 
         private void OnTriggerEnter2D(Collider2D collision) {
                 if (collision.CompareTag("Player")) {
-                        collision.gameObject.GetComponent<Player>().Damage(damage, true);
+                        collision.gameObject.GetComponent<Player>().FallDamage(damage, true);
                 }
         }
 }

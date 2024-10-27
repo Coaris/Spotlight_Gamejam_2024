@@ -38,7 +38,24 @@ public class PlayerAttack : MonoBehaviour {
                 ShootSpore(attackDir);
 
                 //后坐力
-                #region 后坐力
+                KnockBack(attackDir);
+        }
+
+
+
+        #region 攻击
+        private void ShootSpore(Vector2 _attackDir) {
+                float angle = Mathf.Atan2(_attackDir.x, _attackDir.y) * Mathf.Rad2Deg;
+                attackCheck.localRotation = Quaternion.Euler(0, 0, -angle);
+
+                attackTimer = attackCD;
+                ssa.OnAnimStart();
+        }
+        #endregion
+
+
+        #region 后坐力
+        private void KnockBack(Vector2 attackDir) {
                 playerMovement.CheckDirectionToFace(attackDir.x > 0);
 
                 if (attackDir.x > 0) {
@@ -59,26 +76,8 @@ public class PlayerAttack : MonoBehaviour {
                                 rb.velocity += Vector2.up * backForce;
                         }
                 }
-                #endregion
         }
 
-        #region 攻击
-        private void ShootSpore(Vector2 _attackDir) {
-                float angle = Mathf.Atan2(_attackDir.x, _attackDir.y) * Mathf.Rad2Deg;
-                attackCheck.localRotation = Quaternion.Euler(0, 0, -angle);
-
-                attackTimer = attackCD;
-                ssa.OnAnimStart();
-        }
-
-        public void ShootSporeEnd() {
-
-        }
-
-        #endregion
-
-
-        #region 后坐力
         private Vector2 GetAttackDirection() {
                 Vector2 dir = new Vector2();
                 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
