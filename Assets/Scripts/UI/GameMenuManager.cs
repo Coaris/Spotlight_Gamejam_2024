@@ -6,7 +6,7 @@ public class GameMenuManager : MonoBehaviour {
         public static GameMenuManager Instance { get; private set; }
 
         //UI of GameMenu
-        private GameObject gameMenu;
+        [SerializeField] private GameObject gameMenu;
         ////tab's sprites
         //[SerializeField] private Sprite tabSpriteInactive;
         //[SerializeField] private Sprite tabSpriteHover;

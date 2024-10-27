@@ -241,8 +241,8 @@ MonoBehaviour:
   rb: {fileID: 865464328088400431}
   patrolL: {fileID: 8399356946811049332}
   patrolR: {fileID: 6655103806159369829}
-  moveSpeed: 0.5
-  rushSpeed: 5
+  moveSpeed: 2
+  rushSpeed: 10
 --- !u!50 &865464328088400431
 Rigidbody2D:
   serializedVersion: 4

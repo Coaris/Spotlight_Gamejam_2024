@@ -956,15 +956,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f051455cecc72348a0beac9ab73f6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tabSpriteInactive: {fileID: 21300000, guid: 4af17a664840f3644b2223218d845292, type: 3}
-  tabSpriteHover: {fileID: 21300000, guid: 2da972d69752bbe41bf83ca83073afcc, type: 3}
-  tabSpriteActive: {fileID: 21300000, guid: d3a71d5f586b04246907b9a1381c022e, type: 3}
-  tabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  pages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  gameMenu: {fileID: 6096483833817979946}
   mapLoadFader: {fileID: 1170602486606354014}

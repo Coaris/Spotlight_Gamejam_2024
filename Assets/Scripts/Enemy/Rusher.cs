@@ -18,7 +18,10 @@ public class Rusher : EnemyBase, IPlayerCheck {
                 move.y = rb.velocity.y;
         }
         private void Update() {
-                if (isDead) return;
+                if (isDead) {
+                        rb.velocity = Vector2.zero;
+                        return;
+                } 
                 base.Update();
                 move.y = rb.velocity.y;
                 if (isAttacking) {
@@ -48,7 +51,10 @@ public class Rusher : EnemyBase, IPlayerCheck {
                 anim.SetBool("IsAttacking", true);
         }
         public void OnPlayerLost() {
-                StartCoroutine(ResetPatrol());
+                if (gameObject.activeInHierarchy) {
+                        StartCoroutine(ResetPatrol());
+                }
+                
         }
 
         private IEnumerator ResetPatrol() {

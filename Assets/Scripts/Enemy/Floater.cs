@@ -47,14 +47,18 @@ public class Floater : EnemyBase {
         private void Bounce(Vector2 _touchPoint) {
                 Vector2 relativePoint = _touchPoint - (Vector2)transform.position;
                 if (Mathf.Abs(relativePoint.x) >= Mathf.Abs(relativePoint.y)) {
-                        //左右反弹
-                        move.x *= -1;
-                        isRighting = !isRighting;
+                        if ((relativePoint.x > 0 && isRighting) || (relativePoint.x < 0 && !isRighting)) {
+                                //左右反弹
+                                move.x *= -1;
+                                isRighting = !isRighting;
+                        }
                 }
                 else {
-                        //上下反弹
-                        move.y *= -1;
-                        isUping = !isUping;
+                        if ((relativePoint.y > 0 && isUping) || (relativePoint.y < 0 && !isUping)) {
+                                //上下反弹
+                                move.y *= -1;
+                                isUping = !isUping;
+                        }
                 }
         }
         private void Patrol() {
