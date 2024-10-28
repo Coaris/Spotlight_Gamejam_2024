@@ -11,4 +11,11 @@ public class EnmeyAnimEvent : MonoBehaviour {
         public void OnExplode() {
                 root.GetComponent<IExplode>().OnExplode();
         }
+
+        public void OnAwakeEnd() {
+                root.GetComponent<Boss>().ChangeToWalk();
+        }
+        public void OnRushStartEnd() {
+                root.GetComponent<Boss>().ChangeToRush();
+        }
 }
