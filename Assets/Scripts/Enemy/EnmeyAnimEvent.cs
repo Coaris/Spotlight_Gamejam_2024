@@ -18,4 +18,7 @@ public class EnmeyAnimEvent : MonoBehaviour {
         public void OnRushStartEnd() {
                 root.GetComponent<Boss>().ChangeToRush();
         }
+        public void OnKnockEnd() {
+                root.GetComponent<Boss>().FallDropNuts();
+        }
 }

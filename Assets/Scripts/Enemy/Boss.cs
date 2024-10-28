@@ -87,8 +87,8 @@ public class Boss : EnemyBase {
                         //        _state = BossState.Piercing;
                         //        break;
                         default:
-                                MoveToRushPosition();
-                                _state = BossState.Walking;
+                                ChangeToKnocking();
+                                _state = BossState.Knocking;
                                 break;
                 }
                 return _state;
@@ -151,14 +151,14 @@ public class Boss : EnemyBase {
                 if (!isRushing) return;
 
                 if (isFacingRight) {
-                        if ( stagePointR.position.x<= transform.position.x) {
+                        if (stagePointR.position.x <= transform.position.x) {
                                 isRushing = false;
                                 ChangeToWalk();
                         }
                 }
                 else if (!isFacingRight) {
-                        if (transform.position.x <=stagePointL.position.x ) {
-                                isRushing=false;
+                        if (transform.position.x <= stagePointL.position.x) {
+                                isRushing = false;
                                 ChangeToWalk();
                         }
                 }
@@ -185,8 +185,13 @@ public class Boss : EnemyBase {
 
         #region KNOCK
         public void ChangeToKnocking() {
+                move = Vector2.zero;
                 anim.SetTrigger("Knock");
-                Debug.Log("ÔÒµØ");
+        }
+
+        public void FallDropNuts() {
+                ChangeToWalk();
+                //µôÂä¶«Î÷
         }
         #endregion
 
