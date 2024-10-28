@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using DG.Tweening;
 using TreeEditor;
@@ -23,8 +24,14 @@ public class Boss : EnemyBase {
         [SerializeField] private Transform stagePointR;
         [SerializeField] private Transform stagePointM;
 
+        [SerializeField] private List<Transform> dropPoints;
+        private List<Transform> randomDropPoints;
+        [SerializeField] private GameObject dropNutB;
+        [SerializeField] private int dropCount;
+
         private void Start() {
                 player = FindObjectOfType<PlayerController>().transform;
+                randomDropPoints = new List<Transform>();
                 hpMax = hp;
                 state = BossState.Sleeping;
                 move = Vector2.zero;
@@ -32,6 +39,10 @@ public class Boss : EnemyBase {
                 stagePointL.SetParent(null);
                 stagePointR.SetParent(null);
                 stagePointM.SetParent(null);
+
+                foreach (Transform t in dropPoints) {
+                        t.SetParent(null);
+                }
         }
         private void Update() {
                 if (isDead) {
@@ -191,7 +202,12 @@ public class Boss : EnemyBase {
 
         public void FallDropNuts() {
                 ChangeToWalk();
+                //随机几点
+                randomDropPoints = dropPoints.OrderBy(x => Random.value).Take(dropCount).ToList();
                 //掉落东西
+                foreach (Transform t in randomDropPoints) {
+                        Instantiate(dropNutB, t.position, t.rotation);
+                }
         }
         #endregion
 
