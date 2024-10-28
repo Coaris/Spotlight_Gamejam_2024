@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour {
         [SerializeField] protected Animator anim;
-        [SerializeField] private int hp;
+        [SerializeField] protected int hp;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
         [SerializeField] private Transform sprite;
@@ -42,8 +42,6 @@ public class EnemyBase : MonoBehaviour {
                 //        collision.GetComponent<Player>().Damage(1, transform.position.x - collision.transform.position.x);
                 //}
         }
-
-
         public void OnHit(int _damage) {
                 hp -= _damage;
                 // ‹ª˜…¡À∏
