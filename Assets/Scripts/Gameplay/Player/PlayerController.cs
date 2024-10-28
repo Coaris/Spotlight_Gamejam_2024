@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
         public ElderMush elderMush;
         public InteractType interactType { set; private get; }
 
+
         //进入新场景走一小段距离，或从下方跳出来
         //public IEnumerator WalkIntoNewMap(Vector2 exitDir, float delay) {
         //        playerInput.enabled = false;
@@ -77,9 +78,6 @@ public class PlayerController : MonoBehaviour {
                 if (context.phase == InputActionPhase.Started) {
                         switch (interactType) {
                                 case InteractType.None:
-                                        //禁用移动
-                                        //释放孢子
-                                        Debug.Log("释放光孢子");
                                         break;
                                 case InteractType.SavePoint:
                                         //保存
@@ -120,18 +118,19 @@ public class PlayerController : MonoBehaviour {
         #region Input Actions of GameMenu
         public void OnESC(InputAction.CallbackContext context) {
                 if (context.phase == InputActionPhase.Started) {
-                        if (!isOpeningGameMenu) {
-                                //Cursor.visible = true;
-                                isOpeningGameMenu = true;
-                                SwitchInputMap("GameMenu");
-                                gameMenu.OpenGameMenu();
-                        }
-                        else {
-                                //Cursor.visible = false;
-                                isOpeningGameMenu = false;
-                                SwitchInputMap("Gameplay");
-                                gameMenu.CloseGameMenu();
-                        }
+                        Application.Quit();
+                        //if (!isOpeningGameMenu) {
+                        //        //Cursor.visible = true;
+                        //        isOpeningGameMenu = true;
+                        //        SwitchInputMap("GameMenu");
+                        //        gameMenu.OpenGameMenu();
+                        //}
+                        //else {
+                        //        //Cursor.visible = false;
+                        //        isOpeningGameMenu = false;
+                        //        SwitchInputMap("Gameplay");
+                        //        gameMenu.CloseGameMenu();
+                        //}
                 }
         }
         public void OnNextPage(InputAction.CallbackContext context) {
