@@ -128,18 +128,18 @@ public class Boss : EnemyBase {
                 int _skillIndex = Random.Range(0, 3);
                 switch (_skillIndex) {
 
-                        //case 0:
-                        //        MoveToRushPosition();
-                        //        _state = BossState.Walking;
-                        //        break;
-                        //case 1:
-                        //        ChangeToKnocking();
-                        //        _state = BossState.Knocking;
-                        //        break;
-                        //case 2:
-                        //        ChangeToPiercing();
-                        //        _state = BossState.Piercing;
-                        //        break;
+                        case 0:
+                                MoveToRushPosition();
+                                _state = BossState.Walking;
+                                break;
+                        case 1:
+                                ChangeToKnocking();
+                                _state = BossState.Knocking;
+                                break;
+                        case 2:
+                                ChangeToPierceStart();
+                                _state = BossState.Piercing;
+                                break;
                         default:
                                 ChangeToPierceStart();
                                 _state = BossState.Piercing;
@@ -278,7 +278,7 @@ public class Boss : EnemyBase {
                         isWarning = false;
                         //Ö´ÐÐ¹¥»÷
                         currentShadow.GetComponent<Shadow>().OpenColliders();
-                        currentShadow.DOMoveY(shadowHigh.position.y, 0.5f).SetEase(Ease.InBack);
+                        currentShadow.DOMoveY(shadowHigh.position.y, 0.5f).SetEase(Ease.InExpo);
                         if (gameObject.activeInHierarchy) {
                                 StartCoroutine(ResetShadow());
                         }
@@ -286,7 +286,7 @@ public class Boss : EnemyBase {
         }
         private IEnumerator ResetShadow() {
                 yield return new WaitForSeconds(0.5f);
-                currentShadow.DOMoveY(shadowLow.position.y, 1f).SetEase(Ease.InBack);
+                currentShadow.DOMoveY(shadowLow.position.y, 1f).SetEase(Ease.InExpo);
                 ChangeToPierceEnd();
         }
         private void Warn(float _warnTime) {
