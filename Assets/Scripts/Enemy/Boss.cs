@@ -14,20 +14,38 @@ public class Boss : EnemyBase {
         [SerializeField] private float rushPrepareSpeed;
         [SerializeField] private float rushSpeed;
         private Vector2 move;
-        private bool isPreparingForRush;
-        private bool isRushing;
 
+        //TIMER
         [SerializeField] private float skillCD;
         private float skillTimer;
 
+        //RUSH
         [SerializeField] private Transform stagePointL;
         [SerializeField] private Transform stagePointR;
         [SerializeField] private Transform stagePointM;
+        private bool isPreparingForRush;
+        private bool isRushing;
 
+
+        //KNOCK
         [SerializeField] private List<Transform> dropPoints;
         private List<Transform> randomDropPoints;
         [SerializeField] private GameObject dropNutB;
         [SerializeField] private int dropCount;
+
+        //PIERCE
+        [SerializeField] private Transform shadowA;
+        [SerializeField] private Transform shadowB;
+
+        [SerializeField] private Transform shadowLow;
+        [SerializeField] private Transform shadowWaring;
+        [SerializeField] private Transform shadowHigh;
+
+        [SerializeField] private float warningTime;
+        private bool isWarning;
+        private float warningTimer;
+
+        private Transform currentShadow;
 
         private void Start() {
                 player = FindObjectOfType<PlayerController>().transform;
@@ -43,6 +61,25 @@ public class Boss : EnemyBase {
                 foreach (Transform t in dropPoints) {
                         t.SetParent(null);
                 }
+
+                shadowA.SetParent(null);
+                shadowB.SetParent(null);
+
+                shadowLow.SetParent(null);
+                shadowWaring.SetParent(null);
+                shadowHigh.SetParent(null);
+
+                Vector3 pos = Vector3.zero;
+                pos.x=shadowA.position.x;
+                pos.y = shadowLow.position.y;
+                pos.z = shadowA.position.z;
+                shadowA.position = pos;
+                pos.x = shadowB.position.x;
+                pos.y = shadowLow.position.y;
+                pos.z = shadowB.position.z;
+                shadowB.position = pos;
+
+                warningTimer = warningTime;
         }
         private void Update() {
                 if (isDead) {
@@ -57,6 +94,9 @@ public class Boss : EnemyBase {
                 if (state == BossState.Walking) {
                         skillTimer -= Time.deltaTime;
                 }
+                if (isWarning) {
+                        warningTimer -= Time.deltaTime;
+                }
                 #endregion
 
                 #region CHECKERS
@@ -66,13 +106,16 @@ public class Boss : EnemyBase {
                 CheckSkillTimer();
                 CheckGetRushStartPosition();
                 CheckGetRushEndPosition();
+                CheckWarnTimer();
                 #endregion
         }
+
         private void FixedUpdate() {
                 Walk();
                 Rush();
         }
 
+        #region SKILL TIMER
         private void CheckSkillTimer() {
                 if (skillTimer <= 0) {
                         state = DoASkill();
@@ -98,12 +141,13 @@ public class Boss : EnemyBase {
                         //        _state = BossState.Piercing;
                         //        break;
                         default:
-                                ChangeToKnocking();
-                                _state = BossState.Knocking;
+                                ChangeToPierceStart();
+                                _state = BossState.Piercing;
                                 break;
                 }
                 return _state;
         }
+        #endregion
 
         #region WALK
         private void Walk() {
@@ -124,6 +168,9 @@ public class Boss : EnemyBase {
         public void ChangeToWalk() {
                 state = BossState.Walking;
                 anim.SetTrigger("Walk");
+
+                shadowA.GetComponent<Shadow>().CloseColliders();
+                shadowB.GetComponent<Shadow>().CloseColliders();
         }
         #endregion
 
@@ -212,9 +259,46 @@ public class Boss : EnemyBase {
         #endregion
 
         #region PIERCE
-        public void ChangeToPiercing() {
+
+        public void ChangeToPierceStart() {
+                anim.SetTrigger("PierceStart");
+        }
+        public void ChangeToPierce() {
                 anim.SetTrigger("Pierce");
-                Debug.Log("´©´Ì");
+                //´©´Ì¹¥»÷
+                Warn(0.2f);
+        }
+        public void ChangeToPierceEnd() {
+                anim.SetTrigger("PierceEnd");
+                
+        }
+
+        private void CheckWarnTimer() {
+                if (isWarning && warningTimer <= 0) {
+                        isWarning = false;
+                        //Ö´ÐÐ¹¥»÷
+                        currentShadow.GetComponent<Shadow>().OpenColliders();
+                        currentShadow.DOMoveY(shadowHigh.position.y, 0.5f).SetEase(Ease.InBack);
+                        if (gameObject.activeInHierarchy) {
+                                StartCoroutine(ResetShadow());
+                        }
+                }
+        }
+        private IEnumerator ResetShadow() {
+                yield return new WaitForSeconds(0.5f);
+                currentShadow.DOMoveY(shadowLow.position.y, 1f).SetEase(Ease.InBack);
+                ChangeToPierceEnd();
+        }
+        private void Warn(float _warnTime) {
+                warningTimer = warningTime;
+                isWarning = true;
+                if (Random.Range(0, 2) == 0) {
+                        currentShadow = shadowA;
+                }
+                else {
+                        currentShadow = shadowB;
+                }
+                currentShadow.DOMoveY(shadowWaring.position.y, _warnTime).SetEase(Ease.InExpo);
         }
         #endregion
 

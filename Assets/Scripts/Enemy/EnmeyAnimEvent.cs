@@ -21,4 +21,10 @@ public class EnmeyAnimEvent : MonoBehaviour {
         public void OnKnockEnd() {
                 root.GetComponent<Boss>().FallDropNuts();
         }
+        public void OnPierceStartEnd() {
+                root.GetComponent<Boss>().ChangeToPierce();
+        }
+        public void OnPierceEndEnd() {
+                root.GetComponent<Boss>().ChangeToWalk();
+        }
 }
