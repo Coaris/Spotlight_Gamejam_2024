@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainMenu: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
   NewGame: {fileID: 102900000, guid: bcd28379d17c3ce4ba773be2353594dc, type: 3}
+  MainMenuName: MainMenu
+  NewGameName: Map01

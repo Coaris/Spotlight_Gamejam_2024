@@ -50,6 +50,7 @@ public class PlayerAttack : MonoBehaviour {
 
                 attackTimer = attackCD;
                 ssa.OnAnimStart();
+                GameManager.Instance.PlayShootSound();
         }
         #endregion
 

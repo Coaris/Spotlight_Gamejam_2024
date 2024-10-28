@@ -220,13 +220,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 3445386773956698462}
-  hp: 50
+  hp: 3
   spriteRenderer: {fileID: 3474413677700916253}
   sprite: {fileID: 350342466792989750}
   rb: {fileID: 7425169761649590477}
   walkSpeed: 1
   rushPrepareSpeed: 5
-  rushSpeed: 10
+  rushSpeed: 15
   skillCD: 4
   stagePointL: {fileID: 615199652893016599}
   stagePointR: {fileID: 4603558123663854133}
@@ -245,13 +245,14 @@ MonoBehaviour:
   - {fileID: 5774168654794398553}
   - {fileID: 6293075415284678199}
   dropNutB: {fileID: 1371567588360076975, guid: 7dd0e37c5dc79574381460b6005a19ae, type: 3}
-  dropCount: 3
+  dropCount: 4
   shadowA: {fileID: 8830894766870991685}
   shadowB: {fileID: 5114969033882154584}
   shadowLow: {fileID: 7553901745092014087}
   shadowWaring: {fileID: 6253805417131925648}
   shadowHigh: {fileID: 5841460394959782267}
   warningTime: 1
+  door: {fileID: 0}
 --- !u!61 &5901578264388914473
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2011,7 +2012,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1428983093
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -628314709, guid: 0a0d761026cf73d4bbc86818a34f9552, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

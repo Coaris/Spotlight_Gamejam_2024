@@ -55,6 +55,7 @@ public enum PanDirection {
         Up, Down, Left, Right
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(CameraControlTrigger))]
 public class CameraTriggerEditor : Editor {
         CameraControlTrigger cameraControlTrigger;
@@ -90,3 +91,4 @@ public class CameraTriggerEditor : Editor {
                 }
         }
 }
+#endif

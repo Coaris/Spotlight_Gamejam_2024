@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using DG.Tweening;
-using TreeEditor;
 
 public class Boss : EnemyBase {
         private int hpMax;
@@ -46,6 +45,12 @@ public class Boss : EnemyBase {
         private float warningTimer;
 
         private Transform currentShadow;
+
+        [SerializeField] DoorController door;
+
+        public void OnOpenDoor() {
+                door.OpenAllDoors();
+        }
 
         private void Start() {
                 player = FindObjectOfType<PlayerController>().transform;
@@ -305,6 +310,7 @@ public class Boss : EnemyBase {
         #region SLEEP
         private void CheckSleeping() {
                 if (state == BossState.Sleeping && hp != hpMax) {
+                        BGM.Instance.ChangeToBossBGM();
                         state = BossState.Awaking;
                         anim.SetTrigger("Awake");
                 }

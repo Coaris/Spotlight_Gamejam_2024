@@ -458,6 +458,8 @@ public class PlayerMovement : MonoBehaviour {
                 if (RB.velocity.y < 0)
                         force -= RB.velocity.y;
 
+
+                GameManager.Instance.PlayJumpSound();
                 RB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
                 #endregion
         }
@@ -481,6 +483,8 @@ public class PlayerMovement : MonoBehaviour {
 
                 //Unlike in the run we want to use the Impulse mode.
                 //The default mode will apply are force instantly ignoring masss
+
+                GameManager.Instance.PlayJumpSound();
                 RB.AddForce(force, ForceMode2D.Impulse);
                 #endregion
         }

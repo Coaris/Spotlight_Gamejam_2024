@@ -10,6 +10,12 @@ public class GameManager : MonoBehaviour {
         [SerializeField] public static string saveSceneName;
         public bool isReburning;
 
+
+        AudioSource audioSource;
+        public AudioClip jumpSound;
+        public AudioClip shootSound;
+
+
         [System.Serializable]
         struct SaveData {
                 public string sceneName;
@@ -24,6 +30,17 @@ public class GameManager : MonoBehaviour {
                 else Destroy(gameObject);
                 DontDestroyOnLoad(instance);
         }
+
+        private void Start() {
+                audioSource = GetComponent<AudioSource>();
+        }
+        public void PlayJumpSound() {
+                audioSource.PlayOneShot(jumpSound);
+        }
+        public void PlayShootSound() {
+                audioSource.PlayOneShot(shootSound);
+        }
+
 
         //加载游戏或重生时，重新加载场景
         public void LoadGameReburn() {

@@ -15,7 +15,7 @@ public class MainMenuManager : MonoBehaviour {
         #region ²Ëµ¥³¡¾°ÇÐ»»
         public void OnNewGame() {
                 PlayerStatusManager.Instance.SetStatusNewGame();
-                SceneManager.LoadScene(sceneConfig.NewGame.name);
+                SceneManager.LoadScene(sceneConfig.NewGameName);
         }
 
         public void OnLoadGame() {

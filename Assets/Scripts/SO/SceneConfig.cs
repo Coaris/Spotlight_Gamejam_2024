@@ -5,6 +5,11 @@ using UnityEditor;
 
 [CreateAssetMenu(fileName = "SceneConfig", menuName = "Configurations/SceneConfig")]
 public class SceneConfig : ScriptableObject {
+#if UNITY_EDITOR
         public SceneAsset MainMenu;
         public SceneAsset NewGame;
+#endif
+
+        public string MainMenuName;
+        public string NewGameName;
 }

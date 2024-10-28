@@ -27,4 +27,10 @@ public class EnmeyAnimEvent : MonoBehaviour {
         public void OnPierceEndEnd() {
                 root.GetComponent<Boss>().ChangeToWalk();
         }
+        public void OnStopBossBGM() {
+                BGM.Instance.ChangeToNormalBGM();
+        }
+        public void OnOpenDoor() {
+                root.GetComponent<Boss>().OnOpenDoor();
+        }
 }
