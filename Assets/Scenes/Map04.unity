@@ -9352,7 +9352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2047476898126867105, guid: 9b645132494a12d42b94daacddd1ad4e, type: 3}
       propertyPath: portalNameThis
-      value: Map_4_4
+      value: Map_4_2
       objectReference: {fileID: 0}
     - target: {fileID: 2047476898126867105, guid: 9b645132494a12d42b94daacddd1ad4e, type: 3}
       propertyPath: exitDirection.x

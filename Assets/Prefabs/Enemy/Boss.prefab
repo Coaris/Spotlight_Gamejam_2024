@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 3445386773956698462}
-  hp: 3
+  hp: 50
   spriteRenderer: {fileID: 3474413677700916253}
   sprite: {fileID: 350342466792989750}
   rb: {fileID: 7425169761649590477}
