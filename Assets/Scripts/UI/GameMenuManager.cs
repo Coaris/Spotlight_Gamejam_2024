@@ -38,7 +38,7 @@ public class GameMenuManager : MonoBehaviour {
         }
 
 
-        
+
         //外部调用的打开菜单
         public void OpenGameMenu() {
                 gameMenu.SetActive(true);
@@ -46,6 +46,10 @@ public class GameMenuManager : MonoBehaviour {
         //外部调用的关闭菜单
         public void CloseGameMenu() {
                 gameMenu.SetActive(false);
+        }
+
+        public void OnQuit() {
+                Application.Quit();
         }
         #region 无用
 
